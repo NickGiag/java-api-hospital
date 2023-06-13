@@ -1,5 +1,7 @@
 package com.booleanuk.giagkinis.hospital.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonIncludeProperties;
 import jakarta.persistence.*;
 
 @Entity
@@ -17,6 +19,7 @@ public class Doctor {
 
     @OneToOne
     @JoinColumn(name = "user_id", referencedColumnName = "id")
+    @JsonIncludeProperties({"id","username"})
     private User user;
 
     public Doctor() {
