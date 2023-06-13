@@ -22,7 +22,7 @@ public class Appointment {
     private Customer customer;
 
     @Column(nullable = false)
-    private LocalDateTime appointmentDateTime;
+    private String appointmentDateTime;
 
     @Column(name = "created_at")
     @CreationTimestamp
@@ -36,7 +36,7 @@ public class Appointment {
         super();
     }
 
-    public Appointment(Doctor doctor, Customer customer, LocalDateTime appointmentDateTime) {
+    public Appointment(Doctor doctor, Customer customer, String appointmentDateTime) {
         super();
         this.doctor = doctor;
         this.customer = customer;
@@ -67,11 +67,11 @@ public class Appointment {
         this.customer = customer;
     }
 
-    public LocalDateTime getAppointmentDateTime() {
+    public String getAppointmentDateTime() {
         return appointmentDateTime;
     }
 
-    public void setAppointmentDateTime(LocalDateTime appointmentDateTime) {
+    public void setAppointmentDateTime(String appointmentDateTime) {
         this.appointmentDateTime = appointmentDateTime;
     }
 

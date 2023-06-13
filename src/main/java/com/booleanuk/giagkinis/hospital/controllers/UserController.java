@@ -29,22 +29,24 @@ public class UserController {
         return ResponseEntity.ok(user);
     }
 
+    @PostMapping
+    public ResponseEntity<User> createUser(@RequestBody User user) {
+        return new ResponseEntity<>(userRepo.save(user), HttpStatus.CREATED);
+    }
 
-//
-//    @PostMapping
-//    public ResponseEntity<User> createUser(@RequestBody User user) {
-//        // TODO
-//    }
-//
-//    @PutMapping("/{id}")
-//    public ResponseEntity<User> updateUser(@PathVariable Long id, @RequestBody User user) {
-//        User updatedUser = userRepo.updateUser(id, user);
-//        return ResponseEntity.ok(updatedUser);
-//    }
-//
-//    @DeleteMapping("/{id}")
-//    public ResponseEntity<Void> deleteUser(@PathVariable Long id) {
-//        userRepo.deleteUser(id);
-//        return ResponseEntity.noContent().build();
-//    }
+    @PutMapping("/{id}")
+    public ResponseEntity<User> updateUser(@PathVariable Long id, @RequestBody User user) {
+        User updatedUser = userRepo.findById(id).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "No User found with this ID"));
+
+        updatedUser.setUsername(user.getUsername());
+        updatedUser.setPassword(user.getPassword());
+        return new ResponseEntity<>(userRepo.save(updatedUser), HttpStatus.CREATED);
+    }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<User> deleteUser(@PathVariable Long id) {
+        User userToDelete = userRepo.findById(id).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "No User found with this ID"));
+        userRepo.delete(userToDelete);
+        return ResponseEntity.ok(userToDelete);
+    }
 }
