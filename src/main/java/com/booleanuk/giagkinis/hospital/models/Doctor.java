@@ -1,6 +1,5 @@
 package com.booleanuk.giagkinis.hospital.models;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonIncludeProperties;
 import jakarta.persistence.*;
 
@@ -15,7 +14,7 @@ public class Doctor {
     private String name;
 
     @Column(nullable = false)
-    private String specialty;
+    private String speciality;
 
     @OneToOne
     @JoinColumn(name = "user_id", referencedColumnName = "id")
@@ -26,10 +25,10 @@ public class Doctor {
         super();
     }
 
-    public Doctor(String name, String specialty) {
+    public Doctor(String name, String speciality) {
         super();
         this.name = name;
-        this.specialty = specialty;
+        this.speciality = speciality;
     }
 
     public Long getId() {
@@ -48,12 +47,12 @@ public class Doctor {
         this.name = name;
     }
 
-    public String getSpecialty() {
-        return specialty;
+    public String getSpeciality() {
+        return speciality;
     }
 
-    public void setSpecialty(String specialty) {
-        this.specialty = specialty;
+    public void setSpeciality(String speciality) {
+        this.speciality = speciality;
     }
 
     public User getUser() {

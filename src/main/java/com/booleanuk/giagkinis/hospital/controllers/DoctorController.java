@@ -39,7 +39,7 @@ public class DoctorController {
         Doctor updatedDoctor = doctorRepo.findById(id).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "No Doctor found with this ID"));
 
         updatedDoctor.setName(doctor.getName());
-        updatedDoctor.setSpecialty(doctor.getSpecialty());
+        updatedDoctor.setSpeciality(doctor.getSpeciality());
         return new ResponseEntity<>(doctorRepo.save(updatedDoctor), HttpStatus.CREATED);
     }
 
