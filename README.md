@@ -1,4 +1,4 @@
-# Java-Api-Hospital
+# Java-API-Hospital
 
 This Project is about a hospital management system and is constantly evolving.
 
