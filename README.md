@@ -6,7 +6,7 @@ Stage 1: CRUD method for Customers, Doctors and Appointments. Added Users for
 future authorization checks.
 
 Stage 2: Basic frontend using react on : https://github.com/NickGiag/react-frontend-hospital
-Able to make appointments, delete, update.
+Able to make appointments, delete, update. (Currently working on)
 
 
 
