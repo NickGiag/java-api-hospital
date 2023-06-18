@@ -34,4 +34,7 @@
     -formating request data
     -POST method for appointment creation
 
-    
+    v0.2.2
+    -DELETE method for appointment deletion
+    -PUT method for appointment update
+    -New update component form in frontend
