@@ -39,7 +39,7 @@ public class DoctorController {
     public ResponseEntity<Doctor> updateDoctor(@PathVariable Long id, @RequestBody Doctor doctor) {
         Doctor updatedDoctor = doctorRepo.findById(id).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "No Doctor found with this ID"));
 
-        updatedDoctor.setName(doctor.getName());
+        updatedDoctor.setFullName(doctor.getFullName());
         updatedDoctor.setSpeciality(doctor.getSpeciality());
         return new ResponseEntity<>(doctorRepo.save(updatedDoctor), HttpStatus.CREATED);
     }

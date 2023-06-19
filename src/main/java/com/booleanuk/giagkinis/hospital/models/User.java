@@ -1,5 +1,6 @@
 package com.booleanuk.giagkinis.hospital.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import jakarta.persistence.*;
 import org.hibernate.annotations.CreationTimestamp;
@@ -31,10 +32,12 @@ public class User {
 
     @OneToOne(mappedBy = "user")
     @JsonInclude(JsonInclude.Include.NON_NULL)
+    @JsonIgnoreProperties("user")
     private Doctor doctor;
 
     @OneToOne(mappedBy = "user")
     @JsonInclude(JsonInclude.Include.NON_NULL)
+    @JsonIgnoreProperties("user")
     private Customer customer;
 
     public User () {

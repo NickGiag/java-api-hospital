@@ -11,7 +11,7 @@ public class Customer {
     private Long id;
 
     @Column(nullable = false)
-    private String name;
+    private String fullName;
 
     @Column(nullable = false)
     private String phone;
@@ -28,9 +28,9 @@ public class Customer {
         super();
     }
 
-    public Customer(String name, String phone, String email) {
+    public Customer(String fullName, String phone, String email) {
         super();
-        this.name = name;
+        this.fullName = fullName;
         this.phone = phone;
         this.email = email;
     }
@@ -43,12 +43,12 @@ public class Customer {
         this.id = id;
     }
 
-    public String getName() {
-        return name;
+    public String getFullName() {
+        return fullName;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setFullName(String fullName) {
+        this.fullName = fullName;
     }
 
     public String getPhone() {

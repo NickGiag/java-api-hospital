@@ -38,3 +38,15 @@
     -DELETE method for appointment deletion
     -PUT method for appointment update
     -New update component form in frontend
+
+    v0.3.0
+    -added frontend functionality for registration and login
+    now both doctors and customers can register with different info
+    and login
+    -created LoginController to authenticate users
+    -fixed some JS warnings and errors (nulls to empty strings on forms)
+
+    TODO: 
+    -logged in user still sees only customer with Id = 1 appointments
+    -doctor appointments show customer info not themselves(needs different
+    approuch on appointments in the backend)

@@ -39,7 +39,7 @@ public class CustomerController {
     public ResponseEntity<Customer> updateCustomer(@PathVariable Long id, @RequestBody Customer customer) {
         Customer updatedcustomer = customerRepo.findById(id).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "No Customer found with this ID"));
 
-        updatedcustomer.setName(customer.getName());
+        updatedcustomer.setFullName(customer.getFullName());
         updatedcustomer.setPhone(customer.getPhone());
         updatedcustomer.setEmail(customer.getEmail());
         return new ResponseEntity<>(customerRepo.save(updatedcustomer), HttpStatus.CREATED);
