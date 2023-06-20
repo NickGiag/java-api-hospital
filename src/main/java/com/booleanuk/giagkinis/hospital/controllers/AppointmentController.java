@@ -23,8 +23,14 @@ public class AppointmentController {
     private CustomerRepo customerRepo;
 
     @GetMapping("/customers/{customerId}/appointments")
-    public ResponseEntity<List<Appointment>> getAllAppointments(@PathVariable Long customerId) {
+    public ResponseEntity<List<Appointment>> getAllAppointmentsForCustomers(@PathVariable Long customerId) {
         List<Appointment> appointments = appointmentRepo.findByCustomerId(customerId);
+        return ResponseEntity.ok(appointments);
+    }
+
+    @GetMapping("/doctors/{doctorId}/appointments")
+    public ResponseEntity<List<Appointment>> getAllAppointmentsForDoctors(@PathVariable Long doctorId) {
+        List<Appointment> appointments = appointmentRepo.findByDoctorId(doctorId);
         return ResponseEntity.ok(appointments);
     }
 

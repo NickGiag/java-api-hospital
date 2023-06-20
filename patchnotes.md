@@ -46,7 +46,9 @@
     -created LoginController to authenticate users
     -fixed some JS warnings and errors (nulls to empty strings on forms)
 
-    TODO: 
-    -logged in user still sees only customer with Id = 1 appointments
-    -doctor appointments show customer info not themselves(needs different
-    approuch on appointments in the backend)
+    v0.3.1
+    -logged in user now see only their own appointments    
+    -doctor now see their appointments with all customers
+    -login controller reimplemented
+    -UserNotFoundException when logging in with wrong credentials(still working on it)
+    
