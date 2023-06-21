@@ -30,6 +30,7 @@ public class UserController {
         return ResponseEntity.ok(user);
     }
 
+    //TODO if user exists exception
     @PostMapping
     public ResponseEntity<User> createUser(@RequestBody User user) {
         return new ResponseEntity<>(userRepo.save(user), HttpStatus.CREATED);
