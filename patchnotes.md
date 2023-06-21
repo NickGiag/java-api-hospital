@@ -52,3 +52,6 @@
     -login controller reimplemented
     -UserNotFoundException when logging in with wrong credentials(still working on it)
     
+
+    v0.3.2 
+    -added css styles for all components
