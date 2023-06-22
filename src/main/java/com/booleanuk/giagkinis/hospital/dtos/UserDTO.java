@@ -4,13 +4,15 @@ public class UserDTO {
 
     private long id;
     private String userType;
+    private String fullName;
 
     public UserDTO() {
     }
 
-    public UserDTO(long id, String userType) {
+    public UserDTO(long id, String userType, String fullName) {
         this.id = id;
         this.userType = userType;
+        this.fullName = fullName;
     }
 
     public long getId() {
@@ -27,5 +29,13 @@ public class UserDTO {
 
     public void setUserType(String userType) {
         this.userType = userType;
+    }
+
+    public String getFullName() {
+        return fullName;
+    }
+
+    public void setFullName(String fullName) {
+        this.fullName = fullName;
     }
 }

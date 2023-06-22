@@ -1,5 +1,6 @@
 package com.booleanuk.giagkinis.hospital.controllers;
 
+import com.booleanuk.giagkinis.hospital.exceptions.UserAlreadyExistsException;
 import com.booleanuk.giagkinis.hospital.models.User;
 import com.booleanuk.giagkinis.hospital.repositories.UserRepo;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,9 +31,13 @@ public class UserController {
         return ResponseEntity.ok(user);
     }
 
-    //TODO if user exists exception
+
     @PostMapping
-    public ResponseEntity<User> createUser(@RequestBody User user) {
+    public ResponseEntity<User> createUser(@RequestBody User user) throws UserAlreadyExistsException {
+        User existingUser = userRepo.findByUsername(user.getUsername());
+        if (existingUser != null) {
+            throw new UserAlreadyExistsException();
+        }
         return new ResponseEntity<>(userRepo.save(user), HttpStatus.CREATED);
     }
 
