@@ -13,4 +13,6 @@ Stage 3: Make customers and doctors login and registration form
 Stage 4: Customers can see their own appointments, Doctors can see all their appointments
 (different customers)
 
+Stage 5: Add Logos CSS styling and making it more nice!
 
+<em>Details of changes in the patchnotes.md</em>

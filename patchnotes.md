@@ -50,8 +50,16 @@
     -logged in user now see only their own appointments    
     -doctor now see their appointments with all customers
     -login controller reimplemented
-    -UserNotFoundException when logging in with wrong credentials(still working on it)
+    -UserNotFoundException when logging in with wrong credentials
     
 
     v0.3.2 
     -added css styles for all components
+
+    v0.3.5
+    -fixed the exception throwing problem
+    -added UserAlreadyExistException if someone tries to register with a 
+    username that already exists
+    -added WrongPasswordException if wrong credentials are given
+    -added a logo
+    -fixed some more js warnings
