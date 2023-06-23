@@ -2,6 +2,7 @@ package com.booleanuk.giagkinis.hospital.controllers;
 
 import com.booleanuk.giagkinis.hospital.dtos.UserDTO;
 import com.booleanuk.giagkinis.hospital.exceptions.UserNotFoundException;
+import com.booleanuk.giagkinis.hospital.exceptions.WrongPasswordException;
 import com.booleanuk.giagkinis.hospital.models.Customer;
 import com.booleanuk.giagkinis.hospital.models.Doctor;
 import com.booleanuk.giagkinis.hospital.models.User;
@@ -29,18 +30,22 @@ public class LoginController {
     private CustomerRepo customerRepo;
 
     @PostMapping("/login")
-    public ResponseEntity<UserDTO> loggingIn(@RequestBody User user) throws UserNotFoundException {
+    public ResponseEntity<UserDTO> loggingIn(@RequestBody User user) throws UserNotFoundException,WrongPasswordException {
         User loginUser = userRepo.findByUsername(user.getUsername());
-        if (loginUser != null && loginUser.getPassword().equals(user.getPassword())) {
-            if (loginUser.getUserType().equals("doctor")) {
-                Doctor doctor = doctorRepo.findByUserId(loginUser.getId());
-                return ResponseEntity.ok(new UserDTO(doctor.getId(), loginUser.getUserType(), doctor.getFullName()));
-            } else if (loginUser.getUserType().equals("customer")) {
-                Customer customer = customerRepo.findByUserId(loginUser.getId());
-                return ResponseEntity.ok(new UserDTO(customer.getId(), loginUser.getUserType(), customer.getFullName()));
+        if (loginUser != null) {
+            if (loginUser.getPassword().equals(user.getPassword())) {
+                if (loginUser.getUserType().equals("doctor")) {
+                    Doctor doctor = doctorRepo.findByUserId(loginUser.getId());
+                    return ResponseEntity.ok(new UserDTO(doctor.getId(), loginUser.getUserType(), doctor.getFullName()));
+                } else if (loginUser.getUserType().equals("customer")) {
+                    Customer customer = customerRepo.findByUserId(loginUser.getId());
+                    return ResponseEntity.ok(new UserDTO(customer.getId(), loginUser.getUserType(), customer.getFullName()));
+                }
             }
+            throw new WrongPasswordException();
         }
         throw new UserNotFoundException();
+
     }
 
 }
